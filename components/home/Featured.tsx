@@ -1,5 +1,5 @@
 import ProductCard from "@/components/products/ProductCard";
-import { mangoes } from "@/data/mangoes";
+import { products } from "@/data/mangoes";
 
 export default function Featured() {
   return (
@@ -19,10 +19,10 @@ export default function Featured() {
 
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
 
-        {mangoes.map((mango) => (
+        {products.map((product) => (
           <ProductCard
-            key={mango.id}
-            product={mango}
+            key={product.id}
+            product={product}
           />
         ))}
 

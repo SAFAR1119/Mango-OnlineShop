@@ -1,12 +1,15 @@
-"use client";
-
-import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 
-export default function SuccessPage() {
-  const params = useSearchParams();
+interface SuccessPageProps {
+  searchParams: Promise<{
+    orderId?: string;
+  }>;
+}
 
-  const orderId = params.get("orderId");
+export default async function SuccessPage({
+  searchParams,
+}: SuccessPageProps) {
+  const { orderId } = await searchParams;
 
   return (
     <main className="flex min-h-screen items-center justify-center bg-green-50 px-6">
@@ -25,7 +28,7 @@ export default function SuccessPage() {
           </p>
 
           <h2 className="mt-2 text-2xl font-bold">
-            {orderId}
+            {orderId ?? "N/A"}
           </h2>
         </div>
 
@@ -35,7 +38,7 @@ export default function SuccessPage() {
 
         <Link
           href="/"
-          className="mt-8 inline-block rounded-full bg-green-700 px-8 py-3 text-white hover:bg-green-800"
+          className="mt-8 inline-block rounded-full bg-green-700 px-8 py-3 text-white transition hover:bg-green-800"
         >
           Back to Home
         </Link>
