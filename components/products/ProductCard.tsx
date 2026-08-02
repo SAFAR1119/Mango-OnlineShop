@@ -3,12 +3,15 @@
 import Image from "next/image";
 import { ShoppingCart, Star } from "lucide-react";
 import { Product } from "@/types/product";
+import { useCartStore } from "@/store/cartStore";
 
 interface ProductCardProps {
   product: Product;
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
+  const  addToCart  = useCartStore((state) => state.addToCart);
+
   return (
     <div className="group overflow-hidden rounded-3xl border bg-white shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
 
@@ -70,6 +73,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           </div>
 
           <button
+            onClick={() => addToCart(product)}
             className="flex items-center gap-2 rounded-full bg-green-700 px-6 py-3 font-semibold text-white transition-all duration-300 hover:scale-105 hover:bg-green-800"
           >
             <ShoppingCart size={18} />

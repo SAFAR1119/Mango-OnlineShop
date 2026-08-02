@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
+import { toast, Toaster } from "sonner";
+import WhatsAppButton from "@/components/common/WhatsAppButton";
+
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -22,6 +25,13 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${poppins.variable} antialiased`}>
         {children}
+
+        <WhatsAppButton />
+
+        < Toaster 
+        richColors
+        position="top-right"
+        />
       </body>
     </html>
   );
